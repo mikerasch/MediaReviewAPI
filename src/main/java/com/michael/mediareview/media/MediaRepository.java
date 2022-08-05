@@ -1,5 +1,7 @@
 package com.michael.mediareview.media;
 
-public interface MediaRepository{
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MediaRepository extends JpaRepository<Media,Long> {
 
 }

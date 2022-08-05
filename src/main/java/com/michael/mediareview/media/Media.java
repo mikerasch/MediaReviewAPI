@@ -1,6 +1,20 @@
 package com.michael.mediareview.media;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Media {
+    @Id
+    @SequenceGenerator(
+            name = "media_sequence",
+            sequenceName = "media_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "media_sequence"
+    )
     private Long id;
     private String urlImageName;
     private int rate;
