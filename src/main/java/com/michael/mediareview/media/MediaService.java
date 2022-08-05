@@ -3,6 +3,7 @@ package com.michael.mediareview.media;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,8 @@ public class MediaService {
         mediaRepository.deleteById(mediaId);
     }
 
+    // To-Do: Make sure when they are updating name, that it does not already appear in the database.
+    @Transactional
     public void updateMedia(long mediaId, String mediaName, String urlImageName, Integer rate, String rateDescription) {
         Media media = mediaRepository.findMediaById(mediaId);
         if(mediaName != null && mediaName.length() > 0){

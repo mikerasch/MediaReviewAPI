@@ -30,7 +30,7 @@ public class MediaController {
     }
 
     @PutMapping(path = "{mediaId}")
-    public void updateMedia(@PathVariable("mediaId") long mediaId, @RequestParam(required = false) String mediaName, @RequestParam(required = false)  String urlImageName, @RequestParam(required = false) int rate, @RequestParam(required = false) String rateDescription){
+    public void updateMedia(@PathVariable("mediaId") long mediaId, @RequestParam(required = false) String mediaName, @RequestParam(required = false)  String urlImageName, @RequestParam(required = false) Integer rate, @RequestParam(required = false) String rateDescription){
         mediaService.updateMedia(mediaId,mediaName,urlImageName,rate,rateDescription);
     }
 }
