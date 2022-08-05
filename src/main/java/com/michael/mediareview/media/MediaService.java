@@ -36,4 +36,23 @@ public class MediaService {
         }
         mediaRepository.deleteById(mediaId);
     }
+
+    public void updateMedia(long mediaId, String mediaName, String urlImageName, Integer rate, String rateDescription) {
+        Media media = mediaRepository.findMediaById(mediaId);
+        if(mediaName != null && mediaName.length() > 0){
+            media.setMediaName(mediaName);
+        }
+        if(urlImageName != null && urlImageName.length() > 0){
+            media.setUrlImageName(urlImageName);
+        }
+        if(rate != null){
+            if(rate < 0 || rate > 10){
+                throw new IllegalStateException("Updated rate must be between 0 and 10 [inclusive]");
+            }
+            media.setRate(rate);
+        }
+        if(rateDescription != null && rateDescription.length() > 0){
+            media.setRateDescription(rateDescription);
+        }
+    }
 }
