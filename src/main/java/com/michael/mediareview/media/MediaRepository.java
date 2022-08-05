@@ -2,6 +2,8 @@ package com.michael.mediareview.media;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MediaRepository extends JpaRepository<Media,Long> {
+import java.util.Optional;
 
+public interface MediaRepository extends JpaRepository<Media,Long> {
+    public Optional<Media> findMediaByMediaName(String mediaName);
 }

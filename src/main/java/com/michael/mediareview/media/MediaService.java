@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MediaService {
@@ -19,10 +20,13 @@ public class MediaService {
     }
 
     public void addNewMedia(Media media) {
-        if(media.getRate() < 0 || media.getRate() > 10){
+        Optional<Media> findIfExists = mediaRepository.findMediaByMediaName(media.getMediaName());
+        if(findIfExists.isPresent()){
+            throw new IllegalStateException("Movie already exists in the database");
+        }
+        if(media.getRate() < 0 || media.getRate() > 10) {
             throw new IllegalStateException("Rating must be between 0-10 [inclusive]");
         }
-
         mediaRepository.save(media);
     }
 

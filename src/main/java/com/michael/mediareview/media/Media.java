@@ -16,20 +16,23 @@ public class Media {
             generator = "media_sequence"
     )
     private Long id;
+    private String mediaName;
     private String urlImageName;
     private int rate;
     private String rateDescription;
     public Media(){
 
     }
-    public Media(Long id, String urlImageName, int rate, String rateDescription){
+    public Media(Long id, String mediaName, String urlImageName, int rate, String rateDescription){
         this.id = id;
+        this.mediaName = mediaName;
         this.urlImageName = urlImageName;
         this.rate = rate;
         this.rateDescription = rateDescription;
     }
 
-    public Media(String urlImageName, int rate, String rateDescription){
+    public Media(String mediaName, String urlImageName, int rate, String rateDescription){
+        this.mediaName = mediaName;
         this.urlImageName = urlImageName;
         this.rate = rate;
         this.rateDescription = rateDescription;
@@ -43,6 +46,13 @@ public class Media {
         this.id = id;
     }
 
+    public String getMediaName(){
+        return mediaName;
+    }
+
+    public void setMediaName(String mediaName){
+        this.mediaName = mediaName;
+    }
     public String getUrlImageName() {
         return urlImageName;
     }
