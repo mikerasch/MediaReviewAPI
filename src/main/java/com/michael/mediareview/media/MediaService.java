@@ -17,4 +17,12 @@ public class MediaService {
     public List<Media> getMedia(){
         return mediaRepository.findAll();
     }
+
+    public void addNewMedia(Media media) {
+        if(media.getRate() < 0 || media.getRate() > 10){
+            throw new IllegalStateException("Rating must be between 0-10 [inclusive]");
+        }
+
+        mediaRepository.save(media);
+    }
 }
