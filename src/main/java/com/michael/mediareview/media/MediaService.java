@@ -25,4 +25,11 @@ public class MediaService {
 
         mediaRepository.save(media);
     }
+
+    public void deleteMedia(Long mediaId) {
+        if(!mediaRepository.existsById(mediaId)){
+            throw new IllegalStateException("media id does not exist to delete");
+        }
+        mediaRepository.deleteById(mediaId);
+    }
 }

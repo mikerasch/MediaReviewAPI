@@ -23,4 +23,9 @@ public class MediaController {
     public void registerNewMedia(@RequestBody Media media){
         mediaService.addNewMedia(media);
     }
+
+    @DeleteMapping(path = "{mediaId}")
+    public void deleteStudent(@PathVariable("mediaId") Long mediaId){
+        mediaService.deleteMedia(mediaId);
+    }
 }
