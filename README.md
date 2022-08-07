@@ -7,3 +7,10 @@
 - Implement Spring Security
 - Add database for individual users so each user can only see their rated movies.
 - Create a front-end portion for ease of use
+- Add test cases
+- Check before adding to database for any unique attributes
+
+
+### Specifics
+- The project is tailored currently to use my PostgreSQL database.
+- Current tests are ran through Postman <- need to add test cases ASAP
