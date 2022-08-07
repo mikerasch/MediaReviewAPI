@@ -9,6 +9,7 @@
 - Create a front-end portion for ease of use
 - Add test cases
 - Check before adding to database for any unique attributes
+- At the end of development, update README.md for how to use/configure fork
 
 
 ### Specifics
