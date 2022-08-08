@@ -12,8 +12,8 @@ public class TemplatesController {
         return "login";
     }
 
-    @GetMapping("media-review")
-    public String getMediaReviewer() {
-        return "media-review";
+    @GetMapping("index")
+    public String getHomePage(){
+        return "index";
     }
 }
