@@ -19,6 +19,10 @@ public class MediaController {
         return mediaService.getMedia();
     }
 
+    @GetMapping(path = "{mediaId}")
+    public Media getMediaById(@PathVariable("mediaId") Long mediaId){
+        return mediaService.getMediaById(mediaId);
+    }
     @PostMapping
     public void registerNewMedia(@RequestBody Media media){
         mediaService.addNewMedia(media);

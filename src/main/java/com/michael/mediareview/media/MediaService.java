@@ -58,4 +58,13 @@ public class MediaService {
             media.setRateDescription(rateDescription);
         }
     }
+
+    public Media getMediaById(Long mediaId) {
+        if(mediaRepository.existsById(mediaId)){
+            return mediaRepository.getById(mediaId);
+        }
+        else{
+            throw new IllegalStateException("ID does not exist in database!");
+        }
+    }
 }
