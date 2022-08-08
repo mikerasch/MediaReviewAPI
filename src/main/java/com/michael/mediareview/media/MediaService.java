@@ -61,7 +61,7 @@ public class MediaService {
 
     public Media getMediaById(Long mediaId) {
         if(mediaRepository.existsById(mediaId)){
-            return mediaRepository.getById(mediaId);
+            return mediaRepository.findMediaById(mediaId);
         }
         else{
             throw new IllegalStateException("ID does not exist in database!");
