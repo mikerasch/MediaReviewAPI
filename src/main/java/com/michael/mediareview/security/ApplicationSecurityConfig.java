@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
 import static com.michael.mediareview.security.ApplicationUserPermissions.*;
 import static com.michael.mediareview.security.ApplicationUserRoles.*;
 @Configuration
@@ -28,9 +27,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
+                .csrf().disable() // enable for production build
                 .authorizeRequests()
-                .antMatchers("/","index","/css/*","/js/*").permitAll()
+                .antMatchers("index","/css/*","/js/*").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/v1/media/**").hasAuthority(USER_READ.getPermission())
                 .antMatchers(HttpMethod.POST,"/api/v1/media/**").hasAuthority(USER_WRITE.getPermission())
                 .antMatchers(HttpMethod.PUT,"/api/v1/media/**").hasAuthority(USER_UPDATE.getPermission())
@@ -39,7 +38,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
+                .formLogin()
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/media-review",true);
     }
 
     @Override
