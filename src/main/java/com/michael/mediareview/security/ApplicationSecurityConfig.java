@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 import static com.michael.mediareview.security.ApplicationUserPermissions.*;
 import static com.michael.mediareview.security.ApplicationUserRoles.*;
 @Configuration
@@ -41,7 +43,11 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/",true)
                 .and()
-                .rememberMe();
+                .rememberMe()
+                .and()
+                .logout().logoutUrl("/logout")
+                .clearAuthentication(true).invalidateHttpSession(true).deleteCookies("JSESSIONID","remember-me")
+                .logoutSuccessUrl("/login"); // if CSRF is enabled, the logout must be a POST
     }
 
     @Override
