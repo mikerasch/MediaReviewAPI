@@ -2,7 +2,7 @@ package com.michael.mediareview.media;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "media")
 @Table
 public class Media {
     @Id
@@ -15,10 +15,33 @@ public class Media {
             strategy = GenerationType.SEQUENCE,
             generator = "media_sequence"
     )
+    @Column(
+            name = "id",
+            updatable = false
+    )
     private Long id;
+
+    @Column(
+            name = "media_name",
+            nullable = false
+    )
     private String mediaName;
+
+    @Column(
+            name = "url_image_name"
+    )
     private String urlImageName;
+
+    @Column(
+            name = "rate",
+            nullable = false
+    )
     private int rate;
+
+    @Column(
+            name = "rate",
+            nullable = false
+    )
     private String rateDescription;
     public Media(){
 
