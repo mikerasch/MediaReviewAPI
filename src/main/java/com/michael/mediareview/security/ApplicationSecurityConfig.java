@@ -1,5 +1,4 @@
 package com.michael.mediareview.security;
-
 import com.michael.mediareview.media.auth.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

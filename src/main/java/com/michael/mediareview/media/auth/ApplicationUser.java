@@ -8,20 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
-
-@Entity(name = "ApplicationUser")
-@Table(name = "applicationuser")
+@Entity
 public class ApplicationUser implements UserDetails {
-
-    @Transient
-    private Set<? extends GrantedAuthority> grantedAuthorities;
-    private String password;
-    private String username;
-    private boolean isAccountNonExpired;
-    private boolean isAccountNonLocked;
-    private boolean isCredentialNonExpired;
-    private boolean isEnabled;
-
     @Id
     @SequenceGenerator(
             name = "media_sequence",
@@ -33,9 +21,17 @@ public class ApplicationUser implements UserDetails {
             generator = "media_sequence"
     )
     private Long id;
+    @Transient
+    private Set<? extends GrantedAuthority> grantedAuthorities;
+    private String password;
+    private String username;
+    private boolean isAccountNonExpired;
+    private boolean isAccountNonLocked;
+    private boolean isCredentialNonExpired;
+    private boolean isEnabled;
 
     @OneToMany(
-            mappedBy = "applicationUser",
+            mappedBy = "applicationUser" ,
             orphanRemoval = true,
             cascade = CascadeType.ALL
     )
@@ -54,10 +50,9 @@ public class ApplicationUser implements UserDetails {
         this.isEnabled = isEnabled;
     }
 
-    public ApplicationUser() {
+    public ApplicationUser(){
 
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return grantedAuthorities;
@@ -91,13 +86,5 @@ public class ApplicationUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isEnabled;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

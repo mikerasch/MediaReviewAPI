@@ -42,11 +42,6 @@ public class Media {
     @ManyToOne(
             cascade = CascadeType.ALL
     )
-    @JoinColumn(
-            name = "media_id",
-            referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "media_id_fk")
-    )
     private ApplicationUser applicationUser;
     public Media(){
 
