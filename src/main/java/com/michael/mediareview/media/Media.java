@@ -100,6 +100,10 @@ public class Media {
         this.rateDescription = rateDescription;
     }
 
+    public void setUser(ApplicationUser applicationUser){
+        this.applicationUser = applicationUser;
+    }
+
     @Override
     public String toString() {
         return "Media{" +

@@ -87,4 +87,18 @@ public class ApplicationUser implements UserDetails {
     public boolean isEnabled() {
         return isEnabled;
     }
+
+    public void addMedia(Media media){
+        if(!medias.contains(media)){
+            medias.add(media);
+            media.setUser(this);
+        }
+    }
+
+    public void removeBook(Media media){
+        if(this.medias.contains(media)){
+            medias.remove(media);
+            media.setUser(null);
+        }
+    }
 }
