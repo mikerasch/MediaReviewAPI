@@ -1,5 +1,7 @@
 package com.michael.mediareview.media;
 
+import com.michael.mediareview.media.auth.ApplicationUser;
+
 import javax.persistence.*;
 
 @Entity(name = "media")
@@ -36,6 +38,16 @@ public class Media {
             name = "rateDescription"
     )
     private String rateDescription;
+
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "media_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "media_id_fk")
+    )
+    private ApplicationUser applicationUser;
     public Media(){
 
     }
