@@ -3,8 +3,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Set;
-
 public class ApplicationUser implements UserDetails {
+
 
     private final Set<? extends GrantedAuthority> grantedAuthorities;
     private final String password;
