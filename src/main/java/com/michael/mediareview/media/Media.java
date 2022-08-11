@@ -15,32 +15,25 @@ public class Media {
             strategy = GenerationType.SEQUENCE,
             generator = "media_sequence"
     )
-    @Column(
-            name = "id",
-            updatable = false
-    )
     private Long id;
 
     @Column(
-            name = "media_name",
-            nullable = false
+            name = "mediaName"
     )
     private String mediaName;
 
     @Column(
-            name = "url_image_name"
+            name = "urlImageName"
     )
     private String urlImageName;
 
     @Column(
-            name = "rate",
-            nullable = false
+            name = "rate"
     )
     private int rate;
 
     @Column(
-            name = "rate",
-            nullable = false
+            name = "rateDescription"
     )
     private String rateDescription;
     public Media(){
