@@ -1,13 +1,13 @@
 package com.michael.mediareview.media.auth;
 
+import com.michael.mediareview.media.register.ApplicationUserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
-import static com.michael.mediareview.security.ApplicationUserRoles.ADMIN;
+import static com.michael.mediareview.security.ApplicationUserRoles.USER;
 
 @Repository
 public class ApplicationUserDaoService {
@@ -27,12 +27,12 @@ public class ApplicationUserDaoService {
                 .findFirst();
     }
 
-    private void addApplicationUser(){
+    public void addApplicationUser(ApplicationUserRegister user){
         applicationUserDao.save(
                 new ApplicationUser(
-                        ADMIN.getGrantedAuthorities(),
-                        "michael",
-                        "password",
+                        USER.getGrantedAuthorities(),
+                        user.getUsername(),
+                        passwordEncoder.encode(user.getPassword()),
                         true,
                         true,
                         true,

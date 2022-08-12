@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public class MediaService {
-    private MediaRepository mediaRepository;
+    private final MediaRepository mediaRepository;
     @Autowired
     public MediaService(MediaRepository mediaRepository){
         this.mediaRepository = mediaRepository;

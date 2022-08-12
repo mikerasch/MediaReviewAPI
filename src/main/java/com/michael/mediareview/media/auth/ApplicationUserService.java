@@ -20,4 +20,5 @@ public class ApplicationUserService implements UserDetailsService {
         return applicationUserDaoService.selectApplicationUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("not found!"));
     }
+
 }
