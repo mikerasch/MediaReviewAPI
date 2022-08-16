@@ -1,6 +1,5 @@
 package com.michael.mediareview.media.auth;
 
-import com.michael.mediareview.media.register.ApplicationUserRegister;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

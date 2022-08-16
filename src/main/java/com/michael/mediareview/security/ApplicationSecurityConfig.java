@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -15,6 +16,9 @@ import static com.michael.mediareview.security.ApplicationUserPermissions.*;
 import static com.michael.mediareview.security.ApplicationUserRoles.*;
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(
+        securedEnabled = true
+)
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
@@ -32,17 +36,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // enable for production build
                 .authorizeRequests()
                 .antMatchers("/register").permitAll()
-                .antMatchers(HttpMethod.GET,"/api/v1/media/**").hasAuthority(USER_READ.getPermission())
-                .antMatchers(HttpMethod.POST,"/api/v1/media/**").hasAuthority(USER_WRITE.getPermission())
-                .antMatchers(HttpMethod.PUT,"/api/v1/media/**").hasAuthority(USER_UPDATE.getPermission())
-                .antMatchers(HttpMethod.DELETE,"/api/v1/media/**").hasAuthority(USER_DELETE.getPermission())
-                .antMatchers("/admin/**").hasRole(ADMIN.name())
-                .anyRequest()
-                .authenticated()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/",true)
+                .formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/",true).defaultSuccessUrl("/",true)
                 .and()
                 .rememberMe()
                 .and()

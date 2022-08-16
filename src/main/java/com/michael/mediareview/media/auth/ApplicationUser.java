@@ -21,7 +21,9 @@ public class ApplicationUser implements UserDetails {
             generator = "media_sequence"
     )
     private Long id;
-    @Transient
+
+    @ElementCollection(targetClass = GrantedAuthority.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "role")
     private Set<? extends GrantedAuthority> grantedAuthorities;
     private String password;
     private String username;
@@ -48,6 +50,7 @@ public class ApplicationUser implements UserDetails {
         this.isAccountNonLocked = isAccountNonLocked;
         this.isCredentialNonExpired = isCredentialNonExpired;
         this.isEnabled = isEnabled;
+
     }
 
     public ApplicationUser(){
@@ -100,5 +103,20 @@ public class ApplicationUser implements UserDetails {
             medias.remove(media);
             media.setUser(null);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ApplicationUser{" +
+                "id=" + id +
+                ", grantedAuthorities=" + grantedAuthorities +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", isAccountNonExpired=" + isAccountNonExpired +
+                ", isAccountNonLocked=" + isAccountNonLocked +
+                ", isCredentialNonExpired=" + isCredentialNonExpired +
+                ", isEnabled=" + isEnabled +
+                ", medias=" + medias +
+                '}';
     }
 }
