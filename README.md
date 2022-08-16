@@ -4,8 +4,6 @@
 - The goal of this project is to become comfortable with the above mentioned framework.
 
 ## To-Do
-- Implement Spring Security
-- Add database for individual users so each user can only see their rated movies.
 - Create a front-end portion for ease of use
 - Add test cases
 - Check before adding to database for any unique attributes
